@@ -33,12 +33,12 @@ void Widget::initializeGL()
     //set projection matrix
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-1, 1, -1, 1, 1, 100);
+    glFrustum(-1, 1, -1, 1, 1, 1);
 
     //set model-view matrix
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(0.3, 0.3, -0.6);
+    glTranslatef(0.3, 0.3, -2);
 
     //get model-view-projection matrix for vertex shader
     glPushMatrix();
@@ -55,6 +55,24 @@ void Widget::initializeGL()
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(refresh()));
     timer->start(0);
+
+//    glFrontFace(GL_CW);
+//    glCullFace(GL_FRONT);
+//    glEnable(GL_CULL_FACE);
+//    glEnable(GL_DEPTH_TEST);
+
+//    QMatrix4x4 mMatrix;
+//    QMatrix4x4 vMatrix;
+
+////    QMatrix4x4 cameraTransformation;
+////    cameraTransformation.rotate(25, 0, 1, 0); // mAlpha = 25
+////    cameraTransformation.rotate(25, 1, 0, 0);  // mBeta = 25
+
+////    QVector3D cameraPosition = cameraTransformation * QVector3D(0, 0, 10);
+////    QVector3D cameraUpDirection = cameraTransformation * QVector3D(0, 1, 10);
+
+////    vMatrix.lookAt(cameraPosition, QVector3D(0, 0, 0), cameraUpDirection);
+//    vMatrix.lookAt(QVector3D(0.0f, 0.0f, 3.0f), QVector3D(0.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f));
 }
 
 void Widget::resizeGL(int nWidth, int nHeight)
